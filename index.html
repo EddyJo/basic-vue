@@ -8,11 +8,19 @@
 </head>
 <body>
     <div id="app">
-        {{ nextYear('안녕하세요') }}
-        gi
-        <input :type="type" :value="inputData">
-        <a :href="getGithubLink('EddyJo')">Eddy's github</a>git
-    </div>
+        <div id="basic-div">
+            {{ nextYear('안녕하세요') }}
+            <input :type="type" :value="inputData">
+            <a :href="getGithubLink('EddyJo')">Eddy's github</a>
+        </div>
+        <div id="click-div">
+            {{ year }}
+            <button v-on:click="plus">Plus Year</button>
+            <button v-on:click="minus">Minus Year</button>
+        </div>
+    <div/>
+    
+
     <script>
         new Vue({
             el: '#app',
@@ -23,7 +31,8 @@
                 },
                 inputData: 'hello',
                 type: 'number',
-                link: 'https://github.com/'
+                link: 'https://github.com/',
+                year: 2021
             },
             methods: {
                 getGithubLink(channel) {
@@ -34,6 +43,12 @@
                 },
                 otherMethod: function() {
                     this.nextYear('메롱');
+                },
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
                 }
             }
         })
