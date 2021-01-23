@@ -9,24 +9,31 @@
 <body>
     <div id="app">
         <form id="form-div" v-on:submit.prevent="submit">
-            <input type="text"><br>
+            <!-- v-on equals @ -->
+            <!-- <input type="text" :value="text" @keyup="updateText"><br/> -->
+            <input type="text" v-model="text"><br/>
+            {{ text }}<br/>
             <button type="submit">Submit</button>
-
         </form>
-    <div/>
+    </div>
     
 
     <script>
         new Vue({
             el: '#app',
             data: {
-                
+                text: 'text'
             },
             methods: {
                 submit() {
                     alert('Submitted');
                     console.log('hello');
-                }
+                },
+                // updateText(event) {
+                //     console.log(event);
+                //     this.text = event.target.value;
+
+                // }
             }
         })
     </script>
