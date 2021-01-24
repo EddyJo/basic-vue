@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button id="chanageMessage-btn" @click="changeMessage">Click</button>
+        <br>
+        {{ reversedMessage }}
+        <br>
+        {{ reversedMessageMethed() }}
+    </div>
+    <!-- 
+        method와 computed의 차이는 ?
+        computed 속성은 종속대생에 따라 캐싱된다.
+        computed 속성은 해당 속성이 종속된 대상이 변경될 때만 함수을 실행합니다. 
+        즉, Message가 변경되지 않는 한, Computed 속성인 reverseMesssage를 여러번 요청해도 계산을 다시 하지 않고
+        계산되어 있던 결과를 즉시 반환합니다.
+    
+    -->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '안녕하세요'
+            },
+            methods: {
+                changeMessage() {
+                    this.message = '에디';
+                },
+                reversedMessageMethed() {
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
