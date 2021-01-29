@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <eddy-button></eddy-button>
+    </div>
+
+    <hr><hr>
+
+    <div id="app-1">
+        <eddy-button></eddy-button>
+    </div>
+    
+    <script>
+        Vue.component('hello-world', {
+            template: '<div>Hello World</div>'
+        });
+        Vue.component('eddy-button', {
+            template: `
+                    <div>
+                        {{ name }} <br>
+                        <hello-world></hello-world>
+                        <button @click="changeText">Click</button>
+                    </div>
+            `,
+            data() {
+                return {
+                    name: 'Eddy'
+                }
+            },
+            methods: {
+                changeText() {
+                    this.name = 'Eddy updated';
+                }
+            }
+        });
+        
+        const app = new Vue({
+            el: '#app'
+           
+        })
+
+        const app1 = new Vue({
+            el: '#app-1'
+        })
+
+    </script>
+</body>
+</html>
